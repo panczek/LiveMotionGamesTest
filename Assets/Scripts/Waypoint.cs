@@ -26,11 +26,11 @@ public class Waypoint : MonoBehaviour
     {
         AITargetController NPC = other.GetComponent<AITargetController>();
         ThirdPersonCharacter NPCPar = NPC.GetComponent<ThirdPersonCharacter>();
-        float random = Random.Range(minDelay, maxDelay);
+        float rDelay = Random.Range(minDelay, maxDelay);
         int numberOfLoopsCopy = numberOFLoops;
         if (numberOfLoopsCopy == 0)
         {
-            StartCoroutine(NPC.PlayAnimation(random, playAnimation, nextPoint)); 
+            StartCoroutine(NPC.PlayAnimation(rDelay, playAnimation, nextPoint)); 
         }
         else
         {
@@ -44,13 +44,13 @@ public class Waypoint : MonoBehaviour
                     NPCPar.m_MoveSpeedMultiplier = walkStates[walkSpeed];
                     NPCPar.m_AnimSpeedMultiplier = walkStates[walkSpeed];
 
-                    StartCoroutine(NPC.PlayAnimation(random, playAnimation, nextPoint));
+                    StartCoroutine(NPC.PlayAnimation(rDelay, playAnimation, nextPoint));
 
                 }
             }
             if (instantGo)
             {
-                NewWaypoint(NPC, random);
+                NewWaypoint(NPC, rDelay);
             }
             
         }
